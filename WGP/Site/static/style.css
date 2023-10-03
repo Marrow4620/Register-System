@@ -1,0 +1,557 @@
+/* Google Font Import -  */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=PT+Sans+Narrow:wght@700&family=Roboto:wght@900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree','Arial','Open Sans','PT Sans Narrow','Roboto',sans-serif;
+    font-weight: bold;
+}
+
+:root {
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #1C263A;
+    --primary-color: rgba(255, 64, 0, 0.75);
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.15s ease;
+    --tran-03: all 0.225s ease;
+    --tran-04: all 0.225s ease;
+    --tran-05: all 0.225s ease;
+}
+
+body {
+    min-height: 75vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    font-weight: bold;
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark {
+    --body-color: #18191a;
+    --sidebar-color: #1C263A;
+    --primary-color: rgba(255, 64, 0, 0.75);
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 188px;
+    padding: 7.5px 15px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar.close {
+    width: 66px;
+}
+
+/* PARTE DAS OPÇÕES */
+.sidebar li {
+    height: 37.5px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 7.5px;
+}
+
+/*IMAGEM, TEXTO E ICONE*/
+.sidebar header .image,
+.sidebar .icon {
+    min-width: 45px;
+    border-radius: 4.5px;
+}
+
+.sidebar .icon {
+    min-width: 36px;
+    border-radius: 4.5px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.sidebar .text,
+.sidebar .icon {
+    color: #fff;
+    transition: var(--tran-03);
+}
+
+.sidebar .text {
+    font-size: 12.75px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text {
+    opacity: 0;
+}
+
+/* PARTE DA LOGO */
+.sidebar header {
+    position: relative;
+}
+
+.sidebar header .image-text {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar header .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+header .image-text .name {
+    margin-top: 1.5px;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+header .image-text .profession {
+    font-size: 12px;
+    margin-top: -1.5px;
+    display: block;
+}
+
+.sidebar header .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img {
+    width: 30px;
+    border-radius: 4.5px;
+}
+
+/* ICONE DO ABRE E FECHA SIDEBAR */
+.sidebar header .toggle {
+    position: absolute;
+    top: 200%;
+    right: -30px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 30px;
+    width: 30px;
+    background-color: rgb(255, 64, 0);
+    color: #000;
+    border-radius: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16.5px;
+    cursor: pointer;
+    transition: var(--tran-05);
+    z-index: 10;
+}
+
+/* SIDEBAR DARK */
+body.dark .sidebar header .toggle {
+    color: var(--body-color);
+}
+
+.sidebar.close .toggle {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu {
+    margin-top: -7.5px;
+}
+
+.sidebar li a {
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 75px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+/*QUANDO PASSA EM CIMA DO NOME*/
+.sidebar li a:hover {
+    background-color: var(--primary-color);
+    width: 160px;
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--body-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 33px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .menu-bar .mode {
+    border-radius: 4.5px;
+    background-color: #1C263A;
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon {
+    height: 37.5px;
+    width: 45px;
+}
+
+.mode .sun-moon i {
+    position: absolute;
+}
+
+.mode .sun-moon i.sun {
+    opacity: 0;
+}
+
+body.dark .mode .sun-moon i.sun {
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon {
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch {
+    position: absolute;
+    right: 8px;
+    height: 100%;
+    min-width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4.5px;
+    cursor: pointer;
+}
+
+.sidebar.close .menu-bar .mode {
+    background-color: transparent;
+    position: fixed;
+    margin-left: -3px;
+    width: 55px;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 16.5px;
+    width: 33px;
+    border-radius: 100px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    height: 11.25px;
+    width: 11.25px;
+    border-radius: 50%;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before {
+    left: 15px;
+}
+
+.home {
+    position: absolute;
+    top: 0;
+    left: 188px;
+    height: 75vh;
+    width: calc(100% - 188px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    justify-content: center;
+}
+
+.home .text {
+    font-size: 22.5px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 9px 45px;
+}
+
+.sidebar.close ~ .home {
+    left: 58.5px;
+    height: 75vh;
+    width: calc(100% - 58.5px);
+}
+
+body.dark .home .text {
+    color: var(--text-color);
+}
+
+.bottom-content {
+    margin-top: 120px;
+}
+
+/* GIF */
+.gif {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.gif img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BACKGROUND */
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    display: none;
+    background-color: #fefefe;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    padding: 15px;
+    border: 1px solid #888;
+    max-width: 300px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.add-user-form input[type="text"],
+.add-user-form input[type="email"],
+.add-user-form select,
+.add-user-form button[type="submit"] {
+    margin-bottom: 7.5px;
+    padding: 3.75px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.add-user-form button[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.close-modal {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu .sub-menu {
+    display: none;
+    padding-left: 29px;
+    border-left: 1px solid #fff;
+    margin-top: 5px;
+
+}
+
+.menu .sub-menu.active {
+    display: block;
+}
+
+.menu .menu-links {
+    position: absolute;
+}
+
+.menu .menu-links > li {
+ 
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.menu .menu-links > li:last-child {
+    margin-bottom: 0;
+}
+
+
+       /* QUANDO PASSAR O MOUSE NO SIDEBAR FECHADO */
+
+
+.sidebar.close a:hover{
+    color: #fff;
+    background-color: var(--primary-color);
+    font-size: 12.75px;
+    width: 142px;
+}
+
+.sidebar.close .option1:hover::before {
+    content: "Agendamentos";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option1:hover .icon,
+.sidebar.close .option2:hover .icon,
+.sidebar.close .option3:hover .icon,
+.sidebar.close .option4:hover .icon,
+.sidebar.close .option5:hover .icon,
+.sidebar.close .option6:hover .icon,
+.sidebar.close .option7:hover .icon,
+.sidebar.close .option8:hover .icon,
+.sidebar.close .option9:hover .icon,
+.sidebar.close .option10:hover .icon,
+.sidebar.close .option11:hover .icon,
+.sidebar.close .option12:hover .icon,
+.sidebar.close .option13:hover .icon {
+    margin-left: -10px;
+}
+
+
+.bxs-data ::before {
+    content: "\ed76";
+    position: relative;
+}
+
+.sidebar.close .option2:hover::before {
+    content: "Medições";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option3:hover::before {
+    content: "Cadastro";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option4:hover::before {
+    content: "Projetos";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option5:hover::before {
+    content: "Cronograma";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option6:hover::before {
+    content: "Dashboard";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option7:hover::before {
+    content: "Acesso consultor";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option8:hover::before {
+    content: "Sair";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option9:hover::before {
+    content: "Usuário";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option10:hover::before {
+    content: "Cliente";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option11:hover::before {
+    content: "Item";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option12:hover::before {
+    content: "Projeto";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close .option13:hover::before {
+    content: "Cronograma";
+    width: 15px;
+    position: relative;
+    left: 40px;
+}
+
+.sidebar.close li.dropdown:hover {
+    width: 123px;
+
+}
+
+li.dropdown:hover{
+    width: 100px;
+}

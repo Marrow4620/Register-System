@@ -1,0 +1,1467 @@
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2? family= Montserrat:wght@500 & family= PT+Sans+Narrow:wght@700 & family= Roboto+Slab & family= Roboto: wght@900 & display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree','Arial', 'Open Sans', 'PT Sans Narrow','Roboto', sans-serif;
+    font-weight: bold;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #1C263A;
+    --primary-color: rgba(255, 64, 0, 0.75);
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #323338;
+    --star-color: #1C263A;
+    --container-color: #00000014;
+    --fundo2-color: #fff;
+    --fundo3-color: #f0f2f573;
+    --shadow-color: #323338;
+    --menuc-color:#1C263A;
+    --select-color:rgba(255, 64, 0, 0.75);
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+/* BACKGROUND */
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    margin: 0;
+    overflow-y: auto;
+    font-weight: bold;
+    overflow-x: hidden;
+}
+
+/* PARTE DO TEXTO */
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* CORES DO DARKMODE */
+body.dark{
+    --body-color: #121212;
+    --sidebar-color: #1C263A;
+    --primary-color: rgba(255, 64, 0, 0.75);
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #E9EDEF;
+    --text-color: #E9EDEF;
+    --fundo-color: #ccc;
+    --star-color: #E9EDEF;
+    --container-color: #242424;
+    --fundo2-color: #1C263A;
+    --fundo3-color: #64708173;
+    --shadow-color: #ffffff14;
+    --menuc-color: #fff;
+    --select-color: #1C263A;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 187.5px; /* Reduzido em 25% */
+    padding: 7.5px 15px; /* Reduzido em 25% */
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100; 
+    font-weight: bold;
+}
+
+/*TAMANHO DO SIDEBAR QUANDO ELE É DIMINUIDO*/
+.sidebar.close{
+    width: 66px; /* Reduzido em 25% */
+}
+
+
+/* PARTE DAS OPÇÕES */
+.sidebar li{
+    height: 37.5px; /* Reduzido em 25% */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 7.5px; /* Reduzido em 25% */
+}
+
+/*IMAGEM, TEXTO E ICONE*/
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 45px; /* Reduzido em 25% */
+    border-radius: 4.5px; /* Reduzido em 25% */
+}
+
+/* ICONES E TEXTO DO SIDEBAR */
+.sidebar .icon{
+    min-width: 36px; /* Reduzido em 25% */
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px; /* Reduzido em 25% */
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color:  #fff;
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 12.75px; /* Reduzido em 25% */
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+/* SERVE PROS NOMES SUMIREM AO FECHAR O SIDEBAR */
+.sidebar.close .text{
+    opacity: 0;
+}
+
+/* PARTE DA LOGO */
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+
+header .image-text .name {
+    margin-top: 1.5px; /* Reduzido em 25% */
+    font-size: 13.5px; /* Reduzido em 25% */
+    font-weight: 450; /* Reduzido em 25% */
+}
+
+header .image-text .profession{
+    font-size: 12px; /* Reduzido em 25% */
+    margin-top: -1.5px; /* Reduzido em 25% */
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 30px; /* Reduzido em 25% */
+    border-radius: 6px;
+}
+
+/* ICONE DO ABRE E FECHA SIDEBAR */
+.sidebar header .toggle{
+    position: absolute;
+    top: 200%;
+    right: -30px; /* Reduzido em 25% */
+    transform: translateY(-50%) rotate(180deg);
+    height: 30px; /* Reduzido em 25% */
+    width: 30px; /* Reduzido em 25% */
+    background-color: rgb(255, 64, 0);
+    color: #000;
+    border-radius: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16.5px; /* Reduzido em 25% */
+    cursor: pointer;
+    transition: var(--tran-05);
+    z-index:10;
+}
+
+/* SIDEBAR DARK */
+body.dark .sidebar header .toggle{
+    color: var(--body-color);
+}
+
+/* COR DO TEXTO DO LADO DA IMAGEM */
+body.dark h1{
+    color:var(--star-color);
+}
+
+/* ICONE DO SIDEBAR GIRAR */
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: -7.5px; /* Reduzido em 25% */
+}
+
+/* TÍTULO DA PÁGINA */
+.filtro h1{
+    color: var(--star-color);
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 75px; /* Reduzido em 25% */
+    font-size: 37.5px; /* Reduzido em 25% */
+}
+
+/* BOTÃO DO CADASTRO */
+.filtro .add-cliente-btn{
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 85%; /* Reduzido em 25% */
+}
+
+/* ÍCONE QUE FICA JUNTO COM O CADASTRO */
+.filtro bx bxs-plus-circle{
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 1012.5px; /* Reduzido em 25% */
+}
+
+/* CAMPO DE PESQUISA */
+input.search-input {
+    padding: 9px; /* Reduzido em 25% */
+    border: 1px solid #ccc;
+    border-radius: 15px; /* Reduzido em 25% */
+    font-size: 12px; /* Reduzido em 25% */
+    width: 311px; /* Reduzido em 25% */
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 337.5px; /* Reduzido em 25% */
+    background-color: #F0F2F5
+}
+
+/* BOTÃO QUE ACOMPANHA A BARRA DE PESQUISA */
+button.search-button {
+    color: #fff;
+    width: 75px; /* Reduzido em 25% */
+    padding: 9px; /* Reduzido em 25% */
+    border: 1px solid #fff;
+    border: none;
+    border-radius: 15px; /* Reduzido em 25% */
+    font-size: 12px; /* Reduzido em 25% */
+    cursor: pointer;
+    background-color: #1C263A;
+    margin-right: 92.5px; /* Reduzido em 25% */
+    margin-top: 25.5px; /* Reduzido em 25% */
+    margin-left: 65px;
+    position: absolute;
+    left: 594px;
+}
+
+.search-input::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    content: attr(placeholder);
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+}
+
+
+/* LETRA DAS OPÇÕES DO MENU DO SIDEBAR*/
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+   height: 100%; 
+   
+    width: 100%; 
+    border-radius: 75px; /* Reduzido em 25% */
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+/*QUANDO PASSA EM CIMA DO NOME DO SIDEBAR */
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--body-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar li.active a,
+.sidebar li.active a,
+.sidebar li.active a  {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+body.dark .sidebar li.active a,
+body.dark .sidebar li.active a,
+body.dark .sidebar li.active a {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* GERAL DO MENU DO SIDEBAR */
+.sidebar .menu-bar{
+    height: calc(100% - 33px); /* Reduzido em 25% */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+/* SERVE PARA ESTILIZAR A BARRA DE ROLAGEM, NO MOMENTO ESTÁ SEM */
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+
+/* PARTE DO DARKMODE */
+.sidebar .menu-bar .mode{
+    border-radius: 4.5px; /* Reduzido em 25% */
+    background-color: #1C263A(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 37.5px; /* Reduzido em 25% */
+    width: 45px; /* Reduzido em 25% */
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+/* OS DOIS ULTIMOS ICONES DO MENU */
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: -6px; /* Reduzido em 25% */
+    height: 75%; /* Reduzido em 25% */
+    min-width: 45px; /* Reduzido em 25% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4.5px; /* Reduzido em 25% */
+    cursor: pointer;
+}
+
+/* PARTE DO ICONE DO DARKMODE */
+.toggle-switch .switch{
+    position: relative;
+    height: 16.5px; /* Reduzido em 25% */
+    width: 33px; /* Reduzido em 25% */
+    border-radius: 75px; /* Reduzido em 25% */
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 11.25px; /* Reduzido em 25% */
+    width: 11.25px; /* Reduzido em 25% */
+    border-radius: 50%;
+    top: 50%;
+    left: 3.75px; /* Reduzido em 25% */
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+/* ICONE DO DARKMODE NO MODO DARKMODE */
+body.dark .switch::before{
+    left: 15px; /* Reduzido em 25% */
+}
+
+/* MENU DE CIMA */
+.home{
+position: absolute;
+    top: 0;
+    top: 0;
+    left: 187.5px; /* Reduzido em 25% */
+    height: 100vh;
+    width: calc(100% - 187.5px); /* Reduzido em 25% */
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    justify-content: center;
+}
+
+.home .text li{
+    font-size: 20.25px; /* Reduzido em 25% */
+    color: var(--star-color);
+    justify-content: center;
+    
+}
+
+.sidebar.close ~ .home{
+    left: 58.5px; /* Reduzido em 25% */
+    height: 100vh;
+    width: calc(100% - 58.5px); /* Reduzido em 25% */
+}
+
+body.dark .home .text{
+    color: var(--star-color);
+}
+
+/*QUANDO PASSA EM CIMA DO NOME*/
+.home li a:hover{
+    background-color: var(--primary-color);
+}
+
+.home li a:hover .icon,
+.home li a:hover .text{
+    color: var(--body-color);
+}
+
+body.dark .home li a:hover .icon,
+body.dark .home li a:hover .text{
+    color: var(--text-color);
+}
+
+/* LISTA DO MENU */
+.home ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.home nav {
+    padding: 24px 24px 4px 24px; /* Reduzido em 25% */
+}
+
+.home nav a{
+    color: var(--menuc-color);
+    text-decoration: none;
+    padding: 30px; /* Reduzido em 25% */
+}
+
+
+/* QUANDO PASSA O MOUSE EM CIMA DO MENU DE CIMA */
+.home nav a:hover{
+    color:rgb(255, 64, 0);
+    background-color: var(--body-color);
+    border-bottom: 2px solid rgb(255, 64, 0);
+    padding-bottom: 13px; /* Reduzido em 25% */
+    margin-bottom: auto;
+}
+
+.home nav .fixed-menu {
+    color: rgb(255, 64, 0);
+    background-color: var(--body-color);
+    border-bottom: 2px solid rgb(255, 64, 0);
+    padding-bottom: 13px;
+    margin-bottom: auto;
+  }
+
+
+/* FORMULARIO DE CADASTRO */
+.add-cliente-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px; /* Reduzido em 25% */
+    margin-right: 1.5px;     
+}
+
+.add-cliente-form .form-field {
+    margin-bottom: 11.25px; /* Reduzido em 25% */
+}
+  
+.add-cliente-form label {
+    margin-bottom: 3.75px; /* Reduzido em 25% */
+    font-weight: bold;
+}
+  
+.add-cliente-form input[type="text"],
+.add-cliente-form input[type="email"] {
+    border: 1px solid #ccd0d5;
+    border-radius: 3.75px; /* Reduzido em 25% */
+}
+  
+.add-cliente-btn {
+    color: var(--text-color);
+    border: none;
+    padding: 7.5px 15px; /* Reduzido em 25% */
+    border-radius: 3px; /* Reduzido em 25% */
+    cursor: pointer;
+    background-color: transparent;
+}
+  
+  /* PARTE ABAIXO DO MENU QUE FICAM OS FILTROS */
+.filtro {
+    display: flex;
+    justify-content: center;
+}
+
+.filtro h1{
+    color: var(--sidebar-color);
+}
+
+/* AJUSTE DOS CAMPOS PRINCIPAIS */
+div#cliente-list {
+    position: absolute;
+    padding: 0px;
+    margin-top: 150px;
+    margin-left: 146px;
+}
+
+/* PARTE DE CIMA DO CAMPO DE INFORMAÇÕES CADASTRADAS */
+
+.inf{
+    color: var(--text-color);
+}
+
+h3.Info1 {
+    position: relative;
+    top: 100px;
+    left: -569px;
+}
+
+h3.Info2 {
+    position: relative;
+    top: 109px;
+    right: 459px;
+}
+
+h3.Info3 {
+    position: relative;
+    top: 87px;
+    left: -69px;
+}
+
+h3.Info4 {
+    position: relative;
+    left: 178px;
+    top: 65px;
+}
+
+h3.Info5 {
+    position: absolute;
+    left: 991px;
+    top: 160px;
+}
+
+  
+/* PARTE DE DENTRO DO FORMULÁRIO */
+
+ 
+
+.add-cliente-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+  
+.add-cliente-modal .modal-content {
+    background-color: var(--fundo2-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccd0d5;
+    width: 725px;
+    height: 536.75px;
+    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 18px; /* Reduzido em 25% */
+    padding: 20px;
+}
+  
+  
+.add-cliente-form .form-row {
+    margin-bottom: 7.5px; /* Reduzido em 25% */
+    color: var(--star-color);
+}
+  
+.add-cliente-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7.5px; /* Reduzido em 25% */
+    font-size: 30px; /* Reduzido em 25% */
+    margin-right: -2.5px; 
+}
+  
+/* CAMPOS DO POP-UP CADASTRAR PARA PREENCHIMENTO  */
+.add-cliente-form input[type="text"],
+.add-cliente-form input[type="email"],
+.add-cliente-form input[type="password"],
+.add-cliente-form input[type="date"],
+.add-cliente-form select {
+    
+    padding: 12px; /* Reduzido em 25% */
+    border-radius: 30px; /* Reduzido em 25% */
+    border: 1px solid #ccd0d5;
+    font-size: 12.75px; /* Reduzido em 25% */
+    background-color: #d6d9dd;
+    color: #000;
+}
+  
+
+/* BOTÃO DE FECHAR POP-UP */
+.close-modal {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* ESTILIZAÇÃO DOS CAMPOS DENTRO DO FORMULARIO DE CADASTRAR */
+p.cliuf {
+    position: absolute;
+    left: 738px;
+}
+
+p.clicid {
+    position: absolute;
+    right: 221px;
+}
+
+
+/* LISTA DOS CLIENTES */
+.cliente-list {
+    list-style-type: none;
+    padding: 100px;
+    margin-top: 37.5%;
+}
+  
+/* QUANDO PASSA EM CIMA DO CONTAINER DOS CLIENTES */
+.cliente-container:hover{
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid var(--container-color);
+    border-radius: 100px;
+    padding: 1px;
+    margin-bottom: 7px;
+    height: 42px;
+    word-wrap: break-word; 
+    background-color: var(--select-color);  
+    box-shadow: -2px 2px 5px 0px var(--shadow-color);
+    width: 1246px;
+    left: -60px;
+} 
+
+/* OS ESPAÇAMENTOS DO CONTAINER DOS CLIENTES */
+.cliente-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid var(--container-color);
+    border-radius: 100px;
+    padding: 1px;
+    margin-bottom: 7px;
+    height: 42px;
+    word-wrap: break-word; 
+    background-color: var(--container-color);  
+    box-shadow: -2px 2px 5px 0px var(--shadow-color);
+    width: 1246px;
+    left: -70px;
+}
+  
+.cliente-info {
+    flex-grow: 1;
+}
+  
+.cliente-label {
+    font-weight: bold;
+}
+  
+.cliente-actions {
+    display: flex;
+    gap: 7.5px;
+}
+  
+
+/* BOTÕES DE EDITAR E DELETAR */
+.edit-cliente-btn,
+.delete-cliente-btn {
+    padding: 3.75px 7.5px;
+    border-radius: 3.75px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+  
+}
+  
+/* QUANDO PASSA O MOUSE EM CIMA */
+.edit-cliente-btn:hover,
+.delete-cliente-btn:hover {
+    background-color: #e0e0e0;
+}
+  
+/* BOTÃO DE CADASTRAR DENTRO DO FORMULÁRIO */
+.add-cliente-form button[type="submit"],
+.edit-cliente-form button[type="submit"]{
+    background-color: rgb(255 64 0 / 86%);
+    width: 122.5px;
+    padding: 19.5px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #FFF;
+    border-radius: 30px;
+    margin-top: 343px;
+    margin-left: 439.25px;
+    font-size: 16px;
+    height: 55px;
+}
+  
+/* BOTÃO DE FECHAR */
+.buttons .close-modal{
+    background-color: transparent;
+    width: 21.75px;
+    height: 7.5px;
+    padding: 11.25px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid var(--star-color);
+    border-radius: 30px;
+}
+  
+.close-modal {
+    position: absolute;
+    top: 7.5px;
+    right: 7.5px;
+    width: 0px;
+    height: 3.75px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+  
+.close-modal:before,
+.close-modal:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 13.5px;
+    height: 1.5px;
+    background-color: var(--star-color);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+  
+.close-modal:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* TÍTULO DA PÁGINA DE CADASTRAR */
+label.cadtitle {
+    white-space: nowrap;
+}
+
+
+/* TODOS OS H3 QUE TIVEREM NO CONTAINER DE CADASTRAR */  
+.cliente-container h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    min-width: 250px;
+    max-width: 308px;
+    word-wrap: break-word;
+    margin-left: 89px;
+    margin-right: 40px;
+}
+  
+/* TODOS OS P QUE TIVEREM NO CONTAINER */
+.cliente-container p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    word-wrap: break-word;
+}
+
+/* EMAIL DENTRO DO CONTAINER */
+p.initiemail {
+    position: absolute;
+    left: 434px;
+}
+
+/* BOTÕES DE EDITAR E EXCLUIR */
+.cliente-actions {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+}
+  
+.edit-cliente-btn,
+.delete-cliente-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+  
+.edit-cliente-btn:hover,
+.delete-cliente-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* FORMULÁRIO */
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 8px;
+    font-size: 30px;
+}
+
+/* BOTÃO DE ATUALIZAR NO POP-UP DE EDITAR */
+.form-row .file-upload-button {
+    display: flex;
+    margin-left: -130px;
+    padding: 8px 12px;
+    background-color: #d6d9dd;
+    color: #000000b0;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: -43px;
+    font-size: 19px;
+    border: 1px solid #ccd0d5;
+    width: 250px;
+}
+
+/* USADO PARA QUANDO SELECIONAR UM LINK */
+.nav-link.selected {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.nav-link.selected .icon {
+    color: #fff;
+}
+
+.nav-link.selected .text {
+    color: #fff;
+}
+
+/* TEXTO DO MENU VERMELHO */
+.texto-vermelho{
+    background-color: rgba(255, 64, 0, 0.75);
+}
+
+/* POP-UP DE EDIÇÃO */
+#edit-cliente-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+  
+#edit-cliente-modal .modal-content {
+    background-color: var(--fundo2-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccd0d5;
+    width: 717px; /* Reduzido em 25% */
+    height: 534.75px; /* Reduzido em 25% */
+    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 18px; /* Reduzido em 25% */
+    padding: -25px;
+}
+  
+.edit-cliente-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: -12px;
+    margin-right: 1.5px;
+    margin-top: 12px;
+}
+
+/* MEDIDAS DO POP-UP EDITAR USUÁRIO */
+
+.form-row{
+    margin-bottom: -11px;
+    display: block;
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: -8.5px;
+    color: var(--star-color);
+}
+
+/* BOTÃO DE FECHAR DO EDITAR USUÁRIO */
+button#close-model-btn{
+    border: 1px solid #1C263A;
+    width: 21.75px;
+    height: 21.75px;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 11.25px;
+    background-color: transparent;
+}
+
+/* CAMPOS DO POP-UP DE EDIÇÃO */
+input#edit-email,
+input#edit-tipo,
+input#edit-nome,
+input#edit-cep,
+input#edit-pais,
+input#edit-uf,
+input#edit-cidade,
+input#edit-logradouro,
+input#edit-bairro,
+input#edit-numero,
+input#edit-complemento,
+input#edit-telefone,
+input#edit-data_cadastro,
+input#edit-situacao{
+    width: 186.5px;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #ccd0d5;
+    font-size: 12.75px;
+    display: block;
+    margin-bottom: 7.5px;
+    margin-top: 9px;
+    background-color: #d6d6dd;
+    color: #000;
+}
+
+select#edit-cliente-type{
+    cursor: pointer;
+}
+
+/* BOTÕES DO POP-UP EDITAR CADASTRO */
+button.btn.btn-primary {
+    background-color: rgb(255 64 0 / 86%);
+    width: 122.5px;
+    padding: 19.5px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #FFF;
+    border-radius: 30px;
+    margin-top: 378px;
+    margin-left: 469.25px;
+    font-size: 16px;
+    height: 55px;
+}
+
+/* BOTÃO DE FECHAR */
+button.close-modal {
+    margin-top: 11px;
+    margin-right: 15px;
+    background-color: transparent;
+    width: 21.75px;
+    height: 7.5px;
+    padding: 11.25px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid var(--star-color);
+    border-radius: 30px
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    margin-left: 70px;
+}
+
+/* DIMENSÕES DA PÁGINA DE EDITAR USUÁRIO */
+#edit-cliente-modal .form-row {
+    margin-bottom: -11px;
+    display: block;
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: -2.5px;
+    color: var(--star-color);
+    margin-top: 12px;
+}
+
+/* BOTÕES DE EXLUIR E EDITAR */
+.cliente-actions .delete-cliente-btn,
+.cliente-actions .edit-cliente-btn{
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+/* EDIÇÃO DO BOTÃO DE EDITAR */
+button.edit-cliente-btn {
+    font-size: 17px;
+    margin-left: -92px;
+}
+
+/* ICONE DE LIXEIRA */
+i.bx.bxs-trash-alt {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* MODAL DE EDIÇÃO */
+.modal-dialog {
+    max-width: 500px;
+    margin: 142px auto;
+}
+
+/* POP-UP DE CONFIRMAÇÃO DE EXCLUSÃO */
+.modal-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modal-confirm .modal-content {
+    border-radius: 10px;
+    background-color: #fff;
+}
+  
+.modal-confirm .modal-header {
+    background-color: #f44336;
+    color: #fff;
+    padding: 15px;
+}
+  
+.modal-confirm .modal-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+  
+.modal-confirm .modal-body {
+    padding: 20px;
+}
+  
+.modal-confirm .modal-footer {
+    padding: 12px;
+    border-top: 1px solid #ddd;
+}
+
+/* BOTÃO DE CONFIRMAÇÃO */
+.btn-danger {
+    color: #fff;
+    background-color: #f44336;
+    border-color: #f44336;
+    margin-left: 321px;
+    border-radius: 100px;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* BOTÃO DE CANCELAR EXCLUSÃO */
+.btn-secondary {
+    color: #6c757d;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    margin-left: 15px;
+}
+  
+button.btn.btn-secondary:hover{
+ text-decoration: underline;
+}
+
+
+
+/* MODAL DE ADICIONAR CLIENTE */
+.add-cliente-modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* TODOS OS MODALS */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+}
+
+/* SELECIONAR O TIPO DE CLIENTE */
+select#cliente-type {
+    cursor: pointer;
+}
+
+/* MODAL CADASTRAR CLIENTES */
+label.fotm-row-text {
+    font-size: 17px;
+    margin-left: 22px;
+}
+
+.form-row-nome {
+    top: 97px;
+    position: absolute;
+    left: 45px;
+}
+
+
+.form-row-cpf {
+    position: absolute;
+    right: 53px;
+    top: 97px;
+}
+
+input#cpf_cnpj {
+    width: 145px;
+}
+
+input#nome,
+input#edit-nome {
+    width: 469px;
+}
+
+.form-row-email {
+    position: absolute;
+    top: 173px;
+    left: 46px;
+}
+
+input#email,
+input#edit-email {
+    width: 246px;
+}
+
+.form-row-tipo {
+    position: absolute;
+    top: 173px;
+    left: 315px;
+}
+
+input#fisica {
+    position: absolute;
+    top: 41px;
+}
+
+label#fis {
+    position: absolute;
+    top: 38px;
+    left: 19px;
+    font-size: 19px;
+}
+
+input#juridico {
+    position: absolute;
+    left: 90px;
+    top: 42px;
+}
+
+label#jur {
+    position: absolute;
+    left: 110px;
+    top: 39px;
+    font-size: 18px;
+}
+
+
+/* Estilização do modal */
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-header {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 15px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close-modal {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.form-line {
+  border-top: 1px solid #ccc;
+}
+
+/* ESTILIZAÇÃO DO MODAL DE EDITAR */
+.edit-cliente-form .form-row {
+  margin-bottom: 10px;
+}
+
+.edit-cliente-form label {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.edit-cliente-form input[type="text"],
+.edit-cliente-form input[type="email"],
+.edit-cliente-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  
+.form-row-cep {
+    position: absolute;
+    top: 174px;
+    left: 538px;
+}
+
+input#cep,
+input#edit-cep {
+    width: 147px;
+}
+
+.form-row-pais {
+    position: absolute;
+    top: 251px;
+    left: 41px;
+}
+
+input#pais {
+    width: 121px;
+}
+
+.form-row-uf {
+    position: absolute;
+    left: 185px;
+    top: 251px;
+}
+
+input#uf,
+input#edit-uf {
+    width: 67px;
+}
+
+input#cidade {
+    margin-left: 8px;
+}
+
+.form-row-cidade {
+    position: absolute;
+    left: 269px;
+    top: 251px;
+}
+
+.form-row-logradouro {
+    position: absolute;
+    left: 492px;
+    top: 250px;
+}
+
+input#logradouro,
+input#edit-logradouro {
+    width: 200px;
+}
+
+.form-row-bairro {
+    position: absolute;
+    left: 38px;
+    top: 331px;
+}
+
+input#bairro,
+input#edit-bairro {
+    width: 165px;
+}
+
+.form-row-numero {
+    position: absolute;
+    left: 224px;
+    top: 331px;
+}
+
+input#numero,
+input#edit-numero {
+    width: 100px;
+}
+
+.form-row-complemento {
+    position: absolute;
+    left: 342px;
+    top: 331px;
+}
+
+.form-row-telefone {
+    position: absolute;
+    left: 548px;
+    top: 331px;
+}
+
+input#telefone {
+    width: 141px;
+}
+
+.form-row-dt {
+    position: absolute;
+    left: 258px;
+    top: 406px;
+}
+
+.form-row-situacao {
+    position: absolute;
+    left: 37px;
+    top: 408px;
+}
+
+button.joao {
+    position: absolute;
+    left: 510px;
+    top: 478px;
+}
+
+label#ati {
+    position: absolute;
+    left: 27px;
+    top: 25px;
+    font-size: 18px;
+}
+
+input#ativo,
+input#edit-ativo {
+    position: absolute;
+    left: 6px;
+}
+
+input#inativo,
+input#edit-inativo {
+    position: absolute;
+    left: 100px;
+    top: 29px;
+}
+
+label#ina {
+    position: absolute;
+    left: 117px;
+    top: 26px;
+    font-size: 18px;
+}
+
+label#editModalLabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: -42px;
+    font-size: 30px;
+}
+
+button.busccep {
+    position: absolute;
+    left: 117px;
+    top: 37px;
+    border: none;
+    background: transparent;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+input#edit-data_cadastro,
+input#data_cadastro {
+    cursor: pointer;
+}
+
+input#edit-fisica {
+    position: absolute;
+    top: 43px;
+    left: 4px;
+}
+
+label#edit-fis {
+    position: absolute;
+    left: 10px;
+    top: 40px;
+    font-size: 18px;
+}
+
+input#edit-juridico {
+    position: absolute;
+    left: 92px;
+    top: 42px;
+}
+
+label#edit-jur {
+    position: absolute;
+    left: 96px;
+    top: 41px;
+    font-size: 18px;
+}
+
+
+
+
+
+/* ESTILIZAÇÃO DO BOTÃO DE ALTERAR ORDEM*/
+.order {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 92.5px;
+    margin-top: 25.5px;
+    margin-left: 65px;
+    position: absolute;
+    left: 697px;
+    top: 60px;
+}
+
+
+

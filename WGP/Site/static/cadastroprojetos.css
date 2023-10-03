@@ -1,0 +1,1448 @@
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&family=Roboto+Slab&family=Roboto:wght@900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree','Arial', 'Open Sans', 'PT Sans Narrow','Roboto', sans-serif;
+    font-weight: bold;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #1C263A;
+    --primary-color: rgba(255, 64, 0, 0.75);
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #323338;
+    --star-color: #1C263A;
+    --container-color: #00000014;
+    --fundo2-color: #fff;
+    --fundo3-color: #f0f2f573;
+    --shadow-color: #323338;
+    --menuc-color:#1C263A;
+    --select-color:rgba(255, 64, 0, 0.75);
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+/* BACKGROUND */
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    margin: 0;
+    overflow-y: auto;
+    font-weight: bold;
+    overflow-x: hidden;
+}
+
+/* PARTE DO TEXTO */
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* CORES DO DARKMODE */
+body.dark{
+    --body-color: #121212;
+    --sidebar-color: #1C263A;
+    --primary-color: rgba(255, 64, 0, 0.75);
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #E9EDEF;
+    --text-color: #E9EDEF;
+    --fundo-color: #ccc;
+    --star-color: #E9EDEF;
+    --container-color: #242424;
+    --fundo2-color: #1C263A;
+    --fundo3-color: #64708173;
+    --shadow-color: #ffffff14;
+    --menuc-color: #fff;
+    --select-color: #1C263A;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 187.5px; /* Reduzido em 25% */
+    padding: 7.5px 15px; /* Reduzido em 25% */
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100; 
+    font-weight: bold;
+}
+
+/*TAMANHO DO SIDEBAR QUANDO ELE É DIMINUIDO*/
+.sidebar.close{
+    width: 66px; /* Reduzido em 25% */
+}
+
+
+/* PARTE DAS OPÇÕES */
+.sidebar li{
+    height: 37.5px; /* Reduzido em 25% */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 7.5px; /* Reduzido em 25% */
+}
+
+/*IMAGEM, TEXTO E ICONE*/
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 45px; /* Reduzido em 25% */
+    border-radius: 4.5px; /* Reduzido em 25% */
+}
+
+/* ICONES E TEXTO DO SIDEBAR */
+.sidebar .icon{
+    min-width: 36px; /* Reduzido em 25% */
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px; /* Reduzido em 25% */
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color:  #fff;
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 12.75px; /* Reduzido em 25% */
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+/* SERVE PROS NOMES SUMIREM AO FECHAR O SIDEBAR */
+.sidebar.close .text{
+    opacity: 0;
+}
+
+/* PARTE DA LOGO */
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+
+header .image-text .name {
+    margin-top: 1.5px; /* Reduzido em 25% */
+    font-size: 13.5px; /* Reduzido em 25% */
+    font-weight: 450; /* Reduzido em 25% */
+}
+
+header .image-text .profession{
+    font-size: 12px; /* Reduzido em 25% */
+    margin-top: -1.5px; /* Reduzido em 25% */
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 30px; /* Reduzido em 25% */
+    border-radius: 6px;
+}
+
+/* ICONE DO ABRE E FECHA SIDEBAR */
+.sidebar header .toggle{
+    position: absolute;
+    top: 200%;
+    right: -30px; /* Reduzido em 25% */
+    transform: translateY(-50%) rotate(180deg);
+    height: 30px; /* Reduzido em 25% */
+    width: 30px; /* Reduzido em 25% */
+    background-color: rgb(255, 64, 0);
+    color: #000;
+    border-radius: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16.5px; /* Reduzido em 25% */
+    cursor: pointer;
+    transition: var(--tran-05);
+    z-index:10;
+}
+
+/* SIDEBAR DARK */
+body.dark .sidebar header .toggle{
+    color: var(--body-color);
+}
+
+/* COR DO TEXTO DO LADO DA IMAGEM */
+body.dark h1{
+    color:var(--star-color);
+}
+
+/* ICONE DO SIDEBAR GIRAR */
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: -7.5px; /* Reduzido em 25% */
+}
+
+/*
+.sidebar li.search-box{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+*/
+
+/* TÍTULO DA PÁGINA */
+.filtro h1{
+    color: var(--star-color);
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 75px; /* Reduzido em 25% */
+    font-size: 37.5px; /* Reduzido em 25% */
+}
+
+/* BOTÃO DO CADASTRO */
+.filtro .add-projeto-btn{
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 85%; /* Reduzido em 25% */
+}
+
+/* ÍCONE QUE FICA JUNTO COM O CADASTRO */
+.filtro bx bxs-plus-circle{
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 1012.5px; /* Reduzido em 25% */
+}
+
+/* CAMPO DE PESQUISA */
+input.search-input {
+    padding: 9px; /* Reduzido em 25% */
+    border: 1px solid #ccc;
+    border-radius: 15px; /* Reduzido em 25% */
+    font-size: 12px; /* Reduzido em 25% */
+    width: 311px; /* Reduzido em 25% */
+    margin-right: 52.5px; /* Reduzido em 25% */
+    margin-top: 37.5px; /* Reduzido em 25% */
+    position: absolute;
+    top: 37.5px; /* Reduzido em 25% */
+    left: 337.5px; /* Reduzido em 25% */
+    background-color: #F0F2F5
+}
+
+/* BOTÃO QUE ACOMPANHA A BARRA DE PESQUISA */
+button.search-button {
+    color: #fff;
+    width: 75px; /* Reduzido em 25% */
+    padding: 9px; /* Reduzido em 25% */
+    border: 1px solid #fff;
+    border: none;
+    border-radius: 15px; /* Reduzido em 25% */
+    font-size: 12px; /* Reduzido em 25% */
+    cursor: pointer;
+    background-color: #1C263A;
+    margin-right: 92.5px; /* Reduzido em 25% */
+    margin-top: 25.5px; /* Reduzido em 25% */
+    margin-left: 65px;
+    position: absolute;
+    left: 594px;
+}
+
+.search-input::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    content: attr(placeholder);
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+}
+
+
+/* LETRA DAS OPÇÕES DO MENU DO SIDEBAR*/
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+   height: 100%; 
+   
+    width: 100%; 
+    border-radius: 75px; /* Reduzido em 25% */
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+/*QUANDO PASSA EM CIMA DO NOME DO SIDEBAR */
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--body-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar li.active a,
+.sidebar li.active a,
+.sidebar li.active a  {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+body.dark .sidebar li.active a,
+body.dark .sidebar li.active a,
+body.dark .sidebar li.active a {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* GERAL DO MENU DO SIDEBAR */
+.sidebar .menu-bar{
+    height: calc(100% - 33px); /* Reduzido em 25% */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+/* SERVE PARA ESTILIZAR A BARRA DE ROLAGEM, NO MOMENTO ESTÁ SEM */
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+
+/* PARTE DO DARKMODE */
+.sidebar .menu-bar .mode{
+    border-radius: 4.5px; /* Reduzido em 25% */
+    background-color: #1C263A(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 37.5px; /* Reduzido em 25% */
+    width: 45px; /* Reduzido em 25% */
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+/* OS DOIS ULTIMOS ICONES DO MENU */
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: -6px; /* Reduzido em 25% */
+    height: 75%; /* Reduzido em 25% */
+    min-width: 45px; /* Reduzido em 25% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4.5px; /* Reduzido em 25% */
+    cursor: pointer;
+}
+
+/* PARTE DO ICONE DO DARKMODE */
+.toggle-switch .switch{
+    position: relative;
+    height: 16.5px; /* Reduzido em 25% */
+    width: 33px; /* Reduzido em 25% */
+    border-radius: 75px; /* Reduzido em 25% */
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 11.25px; /* Reduzido em 25% */
+    width: 11.25px; /* Reduzido em 25% */
+    border-radius: 50%;
+    top: 50%;
+    left: 3.75px; /* Reduzido em 25% */
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+/* ICONE DO DARKMODE NO MODO DARKMODE */
+body.dark .switch::before{
+    left: 15px; /* Reduzido em 25% */
+}
+
+/* MENU DE CIMA */
+.home{
+position: absolute;
+    top: 0;
+    top: 0;
+    left: 187.5px; /* Reduzido em 25% */
+    height: 100vh;
+    width: calc(100% - 187.5px); /* Reduzido em 25% */
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    justify-content: center;
+}
+
+.home .text li{
+    font-size: 20.25px; /* Reduzido em 25% */
+    color: var(--star-color);
+    justify-content: center;
+    
+}
+
+.sidebar.close ~ .home{
+    left: 58.5px; /* Reduzido em 25% */
+    height: 100vh;
+    width: calc(100% - 58.5px); /* Reduzido em 25% */
+}
+
+body.dark .home .text{
+    color: var(--star-color);
+}
+
+/*QUANDO PASSA EM CIMA DO NOME*/
+.home li a:hover{
+    background-color: var(--primary-color);
+}
+
+.home li a:hover .icon,
+.home li a:hover .text{
+    color: var(--body-color);
+}
+
+body.dark .home li a:hover .icon,
+body.dark .home li a:hover .text{
+    color: var(--text-color);
+}
+
+/* LISTA DO MENU */
+.home ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.home nav {
+    padding: 24px 24px 4px 24px; /* Reduzido em 25% */
+}
+
+.home nav a{
+    color: var(--menuc-color);
+    text-decoration: none;
+    padding: 30px; /* Reduzido em 25% */
+}
+
+
+/* QUANDO PASSA O MOUSE EM CIMA DO MENU DE CIMA */
+.home nav a:hover{
+    color:rgb(255, 64, 0);
+    background-color: var(--body-color);
+    border-bottom: 2px solid rgb(255, 64, 0);
+    padding-bottom: 13px; /* Reduzido em 25% */
+    margin-bottom: auto;
+}
+
+.home nav .fixed-menu {
+    color: rgb(255, 64, 0);
+    background-color: var(--body-color);
+    border-bottom: 2px solid rgb(255, 64, 0);
+    padding-bottom: 13px;
+    margin-bottom: auto;
+  }
+
+
+/* FORMULARIO DE CADASTRO */
+.add-projeto-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px; /* Reduzido em 25% */
+    margin-right: 1.5px;     
+}
+
+.add-projeto-form .form-field {
+    margin-bottom: 11.25px; /* Reduzido em 25% */
+}
+  
+.add-projeto-form label {
+    margin-bottom: 3.75px; /* Reduzido em 25% */
+    font-weight: bold;
+}
+  
+.add-projeto-form input[type="text"],
+.add-projeto-form input[type="date"],
+.add-projeto-form input[type="number"] {
+    border: 1px solid #ccd0d5;
+    border-radius: 3.75px; /* Reduzido em 25% */
+}
+  
+.add-projeto-btn {
+    color: var(--text-color);
+    border: none;
+    padding: 7.5px 15px; /* Reduzido em 25% */
+    border-radius: 3px; /* Reduzido em 25% */
+    cursor: pointer;
+    background-color: transparent;
+}
+  
+  /* PARTE ABAIXO DO MENU QUE FICAM OS FILTROS */
+.filtro {
+    display: flex;
+    justify-content: center;
+}
+
+.filtro h1{
+    color: var(--sidebar-color);
+}
+
+/* AJUSTE DOS CAMPOS PRINCIPAIS */
+div#projeto-list {
+    position: relative;
+    top: 137px;
+    left: 42px;
+}
+
+/* PARTE DE CIMA DO CAMPO DE INFORMAÇÕES CADASTRADAS */
+
+.inf{
+    color: var(--text-color);
+}
+
+
+h3.Info11 {
+    position: relative;
+    top: 82px;
+    left: 141px;
+}
+
+h3.Info21 {
+    position: relative;
+    top: 60px;
+    left: 466px;
+}
+
+h3.Info3 {
+    position: relative;
+    top: 38px;
+    left: 799px;
+}
+
+  
+/* PARTE DE DENTRO DO FORMULÁRIO */
+
+.add-projeto-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+  }
+  
+  .add-projeto-modal .modal-content {
+    background-color: var(--fundo2-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccd0d5;
+    width: 1104px; /* Reduzido em 25% */
+    height: 568.75px; /* Reduzido em 25% */
+    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 18px; /* Reduzido em 25% */
+    padding: 20px;
+  }
+  
+  
+.add-projeto-form .form-row {
+    margin-bottom: 7.5px; /* Reduzido em 25% */
+    color: var(--star-color);
+}
+  
+.add-projeto-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7.5px; /* Reduzido em 25% */
+    font-size: 30px; /* Reduzido em 25% */
+    margin-right: -2.5px; 
+}
+/* CAMPOS DO POP-UP PARA PREENCHIMENTO */
+.add-projeto-form input[type="text"],
+.add-projeto-form input[type="email"],
+.add-projeto-form input[type="password"],
+.add-projeto-form input[type="date"],
+.add-projeto-form input[type="number"], 
+.add-projeto-form input[type="stats"],
+.add-projeto-form select {
+    width: 337.5px; /* Reduzido em 25% */
+    padding: 12px; /* Reduzido em 25% */
+    border-radius: 30px; /* Reduzido em 25% */
+    border: 1px solid #ccd0d5;
+    font-size: 12.75px; /* Reduzido em 25% */
+    display: block;
+    margin-bottom: 7.5px; /* Reduzido em 25% */
+    margin-top: 9px; /* Reduzido em 25% */
+    background-color: #d6d9dd;
+    color: #000;
+}
+  
+.close-modal {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.projeto-list {
+    list-style-type: none;
+    padding: 100px;
+    margin-top: 37.5%;
+}
+  
+.projeto-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid var(--container-color);
+    border-radius: 100px;
+    padding: 1px;
+    margin-bottom: 7px;
+    height: 42px;
+    word-wrap: break-word; 
+    background-color: var(--container-color);  
+    box-shadow: -2px 2px 5px 0px var(--shadow-color);
+    width: 1246px;
+    left: -70px;
+}
+
+.projeto-container:hover{
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid var(--container-color);
+    border-radius: 100px;
+    padding: 1px;
+    margin-bottom: 7px;
+    height: 42px;
+    word-wrap: break-word; 
+    background-color: var(--select-color);  
+    box-shadow: -2px 2px 5px 0px var(--shadow-color);
+    width: 1246px;
+    left: -60px;
+} 
+  
+.projeto-photo {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 7.5px;
+}
+  
+.projeto-info {
+    flex-grow: 1;
+}
+  
+.projeto-label {
+    font-weight: bold;
+}
+  
+.projeto-actions {
+    display: flex;
+    gap: 7.5px;
+}
+  
+.edit-projeto-btn,
+.delete-projeto-btn {
+    padding: 3.75px 7.5px;
+    border-radius: 3.75px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+  
+}
+  
+.edit-projeto-btn:hover,
+.delete-projeto-btn:hover {
+    background-color: #e0e0e0;
+}
+  
+
+  
+.add-projeto-form button[type="submit"],
+.edit-projeto-form button[type="submit"] {
+    background-color: rgb(255 64 0 / 86%);
+    width: 122.5px;
+    padding: 19.5px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #FFF;
+    border-radius: 30px;
+    margin-top: 449px;
+    margin-left: 836.25px;
+    font-size: 16px;
+    height: 55px;
+}
+  
+.buttons .close-modal{
+    background-color: transparent;
+    width: 21.75px;
+    height: 7.5px;
+    padding: 11.25px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid var(--star-color);
+    border-radius: 30px;
+}
+  
+.close-modal {
+    position: absolute;
+    top: 7.5px;
+    right: 7.5px;
+    width: 0px;
+    height: 3.75px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+  
+.close-modal:before,
+.close-modal:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 13.5px;
+    height: 1.5px;
+    background-color: var(--star-color);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+  
+.close-modal:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+  
+.projeto-container h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    min-width: 250px;
+    max-width: 209px;
+    word-wrap: break-word;
+    margin-left: 133px;
+    margin-right: 40px;
+}
+  
+.projeto-container p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    word-wrap: break-word;
+    min-width: 250px;
+    max-width: 209px;
+}
+  
+.projeto-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+  
+.projeto-actions {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+}
+  
+.edit-projeto-btn,
+.delete-projeto-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+  
+.edit-projeto-btn:hover,
+.delete-projeto-btn:hover {
+    background-color: #e0e0e0;
+}
+  
+
+/* BOTÃO DE SELECIONAR FOTO */
+.form-row {
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.form-row .file-upload-button {
+    display: flex;
+    margin-left: -130px;
+    padding: 8px 12px;
+    background-color: #d6d9dd;
+    color: #000000b0;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: -43px;
+    font-size: 19px;
+    border: 1px solid #ccd0d5;
+    width: 250px;
+    }
+
+.form-row .file-upload-button .upload-icon {
+  margin-right: 10px;
+ }
+
+.form-row input[type="file"] {
+  display: none;
+}
+
+/* Adicione esta regra para estilizar o item selecionado */
+.nav-link.selected {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Adicione esta regra para estilizar o ícone do item selecionado */
+.nav-link.selected .icon {
+    color: #fff;
+}
+
+/* Adicione esta regra para estilizar o texto do item selecionado */
+.nav-link.selected .text {
+    color: #fff;
+}
+
+/* TEXTO DO MENU VERMELHO */
+.texto-vermelho{
+    background-color: rgba(255, 64, 0, 0.75);
+}
+
+#edit-projeto-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+  }
+  
+  #edit-projeto-modal .modal-content {
+    background-color: var(--fundo2-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccd0d5;
+    width: 415px; /* Reduzido em 25% */
+    height: 568.75px; /* Reduzido em 25% */
+    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 18px; /* Reduzido em 25% */
+    padding: -25px;
+  }
+  
+
+/*  ´POP-UP TELA DE EDITAR USUÁRIO  */
+
+
+.edit-projeto-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: -12px;
+    margin-right: 1.5px;
+    margin-top: 12px;
+}
+
+/* MEDIDAS DO POP-UP EDITAR USUÁRIO */
+
+.form-row{
+    margin-bottom: -11px;
+    display: block;
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: -2.5px;
+    color: var(--star-color);
+}
+
+
+/* BOTÃO DE FECHAR DO EDITAR USUÁRIO */
+button#close-model-btn{
+    border: 1px solid #1C263A;
+    width: 21.75px;
+    height: 21.75px;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 11.25px;
+    background-color: transparent;
+}
+
+/* FOTO DA TELA DE EDITAR USUÁRIO */
+
+.photo-preview-container {
+    max-width: 300px; /* Defina o tamanho máximo desejado */
+    margin: 0 auto; /* Centralize a foto horizontalmente */
+}
+  
+.photo-preview-container img {
+    width: 69px; /* Ajuste a largura da foto para preencher a largura máxima */
+    height: 69px; /* Mantenha a proporção original da foto */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 246px;
+}
+  
+label.photon {
+    margin-right: 240px;
+    color: var(--text-color);
+    margin-top: 17px;
+}
+
+
+
+/* CAMPOS DO POP-UP DE EDIÇÃO */
+input#edit-email,
+input#edit-name,
+select#edit-projeto-type,
+input#edit-password{
+    width: 337.5px;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #ccd0d5;
+    font-size: 12.75px;
+    display: block;
+    margin-bottom: 7.5px;
+    margin-top: 9px;
+    background-color: #d6d6dd;
+    color: #000;
+}
+
+select#edit-projeto-type{
+    cursor: pointer;
+}
+
+/* CAMPO DE ADICIONAR FOTO EDITAR USUÁRIO */
+input#edit-photo{
+    display: none;
+
+}
+
+label.file-upload-button{
+    display: flex;
+    margin-left: -130px;
+    padding: 8px 12px;
+    background-color: #d6d6dd;
+    color: #000000b0;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: -20px;
+    font-size: 19px;
+    border: 1px solid #ccd0d5;
+    width: 234px;
+    margin-top: 4px;
+    height: 40px;
+}
+
+/* BOTÕES DO POP-UP EDIÇÃO*/
+
+/* BOTÃO DE FECHAR */
+button.close-modal {
+    margin-top: 11px;
+    margin-right: 15px;
+    background-color: transparent;
+    width: 21.75px;
+    height: 7.5px;
+    padding: 11.25px;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid var(--star-color);
+    border-radius: 30px
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    margin-left: 70px;
+}
+
+
+h6 {
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+/* DIMENSÕES DA PÁGINA DE EDITAR USUÁRIO */
+#edit-projeto-modal .form-row {
+    margin-bottom: -11px;
+    display: block;
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: -2.5px;
+    color: var(--star-color);
+    margin-top: 12px;
+}
+
+/* ESPAÇO DO EMOJI PARA A PALAVRA */
+span.upload-icon {
+    margin-right: 10px;
+}
+
+#edit-projeto-modal label.file-upload-button {
+    display: flex;
+    margin-left: -130px;
+    padding: 8px 12px;
+    background-color: transparent;
+    color: #000000b0;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: -192px;
+    font-size: 19px;
+    border: transparent;
+    width: 189px;
+    margin-top: -55px;
+    height: 40px;
+}
+
+label.file-upload-button:hover{
+    text-decoration: underline;
+}
+
+
+
+.projeto-actions .delete-projeto-btn,
+.projeto-actions .edit-projeto-btn{
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+
+/**/
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+  
+.popup button {
+    display: block;
+    margin-bottom: 5px;
+}
+  
+
+
+button.edit-projeto-btn {
+    font-size: 17px;
+    margin-left: -92px;
+}
+
+i.bx.bxs-trash-alt {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+
+.modal-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+  
+.modal-dialog {
+    max-width: 500px;
+    margin: 142px auto;
+}
+  
+.modal-confirm .modal-content {
+    border-radius: 10px;
+    background-color: #fff;
+}
+  
+.modal-confirm .modal-header {
+    background-color: #f44336;
+    color: #fff;
+    padding: 15px;
+}
+  
+.modal-confirm .modal-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+  
+.modal-confirm .modal-body {
+    padding: 20px;
+}
+  
+.modal-confirm .modal-footer {
+    padding: 12px;
+    border-top: 1px solid #ddd;
+}
+  
+.btn-danger {
+    color: #fff;
+    background-color: #f44336;
+    border-color: #f44336;
+    margin-left: 321px;
+    border-radius: 100px;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+}
+  .btn-secondary {
+    color: #6c757d;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  
+  button.btn.btn-secondary:hover{
+    text-decoration: underline;
+  }
+
+  select#projeto-type {
+    cursor: pointer;
+}
+
+            
+/*  MODAL DE CADASTRO DE PROJETOS  */
+
+label.cadpro {
+    position: absolute;
+    top: 14px;
+    left: 33px;
+}
+
+label.fotm-row-text {
+    font-size: 17px;
+    margin-left: 21px;
+}
+
+.add-projeto-form-container {
+    position: absolute;
+    top: 69px;
+    left: 32px;
+}
+
+.form-row-projeto {
+    position: absolute;
+    top: 69px;
+    left: 387px;
+}
+
+.form-row-consultor {
+    position: absolute;
+    top: 69px;
+    left: 736px;
+}
+
+.form-row-escopo {
+    position: absolute;
+    top: 157px;
+    left: 32px;
+}
+
+.form-row-gpcli {
+    position: absolute;
+    top: 157px;
+    left: 389px;
+}
+
+.form-row-gpwin {
+    position: absolute;
+    top: 157px;
+    left: 737px;
+}
+
+.form-row-tipofat {
+    position: absolute;
+    top: 239px;
+    left: 30px;
+}
+
+.form-row-tiposer {
+    position: absolute;
+    top: 239px;
+    left: 388px;
+}
+
+.form-row-proposta {
+    position: absolute;
+    top: 239px;
+    left: 738px;
+}
+
+.form-row-responsavel {
+    position: absolute;
+    top: 320px;
+    left: 30px;
+}
+
+.form-row-assinado {
+    position: absolute;
+    top: 320px;
+    left: 385px;
+}
+
+.form-row-horas {
+    position: absolute;
+    top: 320px;
+    left: 737px;
+}
+
+.form-row-valorhora {
+    position: absolute;
+    top: 397px;
+    left: 30px;
+}
+
+.form-row-inicio {
+    position: absolute;
+    top: 398px;
+    left: 383px;
+}
+
+.form-row-termino {
+    position: absolute;
+    top: 398px;
+    left: 737px;
+}
+
+.form-row-status {
+    position: absolute;
+    top: 433px;
+    left: 34px;
+}
+
+#edit-projeto-modal .modal-content {
+    background-color: var(--fundo2-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccd0d5;
+    width: 1104px;
+    height: 568.75px;
+    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.edit-projeto-form input[type="text"], 
+.edit-projeto-form input[type="email"], 
+.edit-projeto-form input[type="password"], 
+.edit-projeto-form input[type="date"], 
+.edit-projeto-form input[type="number"], 
+.edit-projeto-form input[type="stats"], 
+.edit-projeto-form select {
+    width: 337.5px;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #ccd0d5;
+    font-size: 12.75px;
+    display: block;
+    margin-bottom: 7.5px;
+    margin-top: 9px;
+    background-color: #d6d9dd;
+    color: #000;
+}
+
+label#editModalLabel {
+    position: absolute;
+    top: 14px;
+    left: 59px;
+}
+
+.edit-form-row-status {
+    position: absolute;
+    top: 492px;
+    left: 34px;
+}
+
+label.form-row-text.st {
+    font-size: 17px;
+    margin-top: 49px;
+    cursor: pointer;
+    margin-left: 24px;
+}
+
+label.anda {
+    font-size: 17px;
+    margin-left: 290px;
+    margin-top: -29px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+input#status-concluido {
+    position: absolute;
+    top: 77px;
+    left: 429px;
+    cursor: pointer;
+}
+
+label.concl {
+    font-size: 18px;
+    position: absolute;
+    left: 448px;
+    top: 74px;
+    cursor: pointer;
+}
+
+input#status-iniciado {
+    margin-left: 21px;
+}
+
+label.inici {
+    font-size: 18px;
+    margin-top: -20px;
+    margin-left: 42px;
+}
+
+label.n-ini {
+    position: absolute;
+    left: 152px;
+    top: 75px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+input#status-nao-iniciado {
+    position: absolute;
+    top: 78px;
+    left: 132px;
+}
+
+input#status-em-andamento {
+    position: absolute;
+    top: 77px;
+    left: 269px;
+}
+
+
+
+select#edit-TipoProjeto,
+input#edit-Inicio,
+input#status-em-andamento,
+input#edit-Termino,
+select#Cliente,
+select#TipoProjeto,
+select#TipoFaturamento,
+select#TipoServidor,
+input#inicio,
+input#termino,
+input#status-iniciado,
+label.inici,
+select#Consultor,
+input#Assinado,
+input#Inicio,
+input#Termino,
+label.n-ini,
+input#status-nao-iniciado,
+select#edit-Cliente,
+select#edit-Consultor {
+    cursor: pointer;
+}
+
+
+.order {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 92.5px;
+    margin-top: 25.5px;
+    margin-left: 65px;
+    position: absolute;
+    left: 697px;
+    top: 60px;
+}
+

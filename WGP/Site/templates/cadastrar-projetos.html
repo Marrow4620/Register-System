@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+ 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cadastroprojetos.css') }}">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+  
+    
+
+    <!--<title>Dashboard Sidebar Menu</title>--> 
+</head>
+<body>
+    
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <a href="{{ url_for('index') }}">
+
+                        <img src="{{ url_for('static', filename='logan1.webp') }}" alt="Descrição da imagem">
+                      </a>
+                      
+                </span>
+                <!-- LOGO -->
+                <div class="text logo-text">
+                    <i class='bx bx-objects-vertical-bottom icon'></i>
+                    <span class="name"></span>
+                    <span class="profession"></span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <!-- ITENS DO MENU -->
+                <!--SEMPRE QUE FOR ADICIONAR UM ICONE NO SIDEBAR TEM QUE COLOCAR "icon" NO FINAL --> 
+
+                <!-- ESPAÇO ENTRE A LOGO E O MENU -->
+                <li class="-"></li>
+                <!--  -->
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-data icon'></i>
+                            <span class="text nav-text">Agendamentos</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-time-five icon'></i>
+                            <span class="text nav-text">Medições</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link active" onclick="selectMenuItem(this)">
+                        <a href="#">
+                            <i class='bx bx-pencil icon'></i>
+                            <span class="text nav-text">Cadastros</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-business icon'></i>
+                            <span class="text nav-text">Projetos</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-calendar icon'></i>
+                            <span class="text nav-text">Cronograma</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-stats icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Acesso Consultor</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Sair</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+                
+    </nav>
+
+    <!---TODO O BACKGROUND-->
+
+        <section class="home">
+            <div class="text">
+        <!-- O MENU DA PÁGINA DE USUÁRIO -->
+                <div id="menu">
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="{{ url_for('cadastrar_usuario.cadastrar_usuario') }}">Usuário</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('cadastrar_cliente.cadastrar_cliente') }}">Cliente</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('cadastrar_itens.cadastrar_itens') }}">Item</a>
+                            </li>
+                            <li>
+                                <a href="#"  class="fixed-menu" >Projeto</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('cadastrar_cronograma.cadastrar_cronograma') }}">Cronograma</a>
+                            </li>
+                        </ul>
+                    </nav>
+        
+                </div>
+                 <!-- TODA O MENU DE CIMA, SERÁ USADA PADRÃO NAS OUTRAS PÁGINAS -->
+                 <div class="filtro">
+
+                    <!-- TITULO DA PÁGINA -->
+                    <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 34px;">Projetos</h1>
+
+
+                  
+    
+                    
+                    <!-- Parte do HTML com o formulário de pesquisa -->
+<div class="search-bar">
+  <form id="search-form" action="/search" method="POST">
+    <input type="text" class="search-input" name="q" placeholder="Pesquisar Projeto" autocomplete="off">
+    <button type="submit" class="search-button">Pesquisar</button>
+  </form>
+</div>
+
+
+<!-- TODAS AS FUNCIONALIDADES DO BOTÃO DE CADASTRO -->
+<div class="Cadastrar">
+  <button id="add-projeto-btn" class="add-projeto-btn" style="display: flex; align-items: center;">
+    <i class='bx bxs-plus-circle icon' style='color:hsl(120, 100%, 24%); font-size: 20px; vertical-align: middle'></i>
+    <span style="margin-left: 5px; font-size: 16px">Cadastrar</span>
+  </button>
+  <div id="add-projeto-modal" class="add-projeto-modal">
+    <div class="modal-content">
+      <form id="add-projeto-form" class="add-projeto-form">
+        <div class="form-row">
+          <label for="title" class="cadpro">Cadastro de Projeto</label>
+          <hr class="form-line">
+        </div>
+       <!-- Restante do formulário -->
+       <div class="add-projeto-form-container">
+       <div class="form-row-cliente">
+           <label for="Cliente" class="fotm-row-text">Cliente:</label>
+           <select name="Cliente" id="Cliente" required>
+               <option value="">Selecione o cliente</option>
+               {% for Cliente in Clientes %}
+               <option value="{{ Cliente.nome}}">{{ Cliente.nome }}</option>
+               {% endfor %}
+           </select>
+       </div>
+   </div>
+  <div class="form-row-projeto">
+    <label for="TipoProjeto" class="fotm-row-text">Tipo de Projeto:</label>
+    <select name="TipoProjeto" id="TipoProjeto" required>
+      <option value="">Selecione o tipo de projeto</option>
+      <option value="Implantação">Implantação</option>
+      <option value="Revitalização">Revitalização</option>
+      <option value="Job To Be">Job To Be</option>
+      <option value="BPO">BPO</option>
+      <option value="BI Novos Negócios">BI Novos Negócios</option>
+      <option value="Horas Medidas">Horas Medidas</option>
+      <option value="Histórico">Histórico</option>
+      <option value="Globaltec">Globaltec</option>
+    </select>
+  </div>
+  
+  <div class="form-row-consultor">
+    <label for="Consultor" class="fotm-row-text">Usuário:</label>
+    <select name="Consultor" id="Consultor" required>
+      <option value="">Selecione o usuário</option>
+      <!-- Preencha as opções dos consultores dinamicamente a partir do servidor -->
+    </select>
+  </div>
+  
+  <div class="form-row-escopo">
+    <label for="EscopoProjeto" class="fotm-row-text">Escopo do Projeto:</label>
+    <input type="text" name="EscopoProjeto" id="EscopoProjeto" placeholder="Informe o escopo do projeto" required>
+  </div>
+  
+  <div class="form-row-gpcli">
+    <label for="GPCliente" class="fotm-row-text">GP Cliente:</label>
+    <input type="text" name="GPCliente" id="GPCliente" required>
+  </div>
+  
+  <div class="form-row-gpwin">
+    <label for="GPWinnercon" class="fotm-row-text">GP Winnercon:</label>
+    <input type="text" name="GPWinnercon" id="GPWinnercon" required>
+  </div>
+  
+  <div class="form-row-tipofat">
+    <label for="TipoFaturamento" class="fotm-row-text">Tipo de Faturamento:</label>
+    <select name="TipoFaturamento" id="TipoFaturamento" required>
+      <option value="">Selecione o tipo de faturamento</option>
+      <option value="HH">HH</option>
+      <option value="NM">NM</option>
+      <option value="EF">EF</option>
+    </select>
+  </div>
+  
+  <div class="form-row-tiposer">
+    <label for="TipoServidor" class="fotm-row-text">Tipo de Servidor:</label>
+    <select name="TipoServidor" id="TipoServidor" required>
+      <option value="">Selecione o tipo de servidor</option>
+      <option value="Local">Local</option>
+      <option value="GlobalCloud">GlobalCloud</option>
+      <option value="Cloud de Terceiros">Cloud de Terceiros</option>
+    </select>
+  </div>
+
+  <div class="form-row-proposta">
+    <label for="Proposta" class="fotm-row-text">Proposta:</label>
+    <input type="text" name="Proposta" id="Proposta" required>
+  </div>
+  
+  <div class="form-row-responsavel">
+    <label for="ResponsavelAssinou" class="fotm-row-text">Responsável que assinou:</label>
+    <input type="text" name="ResponsavelAssinou" id="ResponsavelAssinou" required>
+  </div>
+  
+  <div class="form-row-assinado">
+    <label for="Assinado" class="fotm-row-text">Assinado:</label>
+    <input type="date" name="Assinado" id="Assinado" required>
+  </div>
+  
+  <div class="form-row-horas">
+    <label for="Horas" class="fotm-row-text">Horas:</label>
+    <input type="number" name="Horas" id="Horas" required>
+  </div>
+  
+  <div class="form-row-valorhora">
+    <label for="ValorHora" class="fotm-row-text">Valor da Hora:</label>
+    <input type="number" step="0.01" name="ValorHora" id="ValorHora" required>
+  </div>
+  
+  <div class="form-row-inicio">
+    <label for="Inicio" class="fotm-row-text">Início:</label>
+    <input type="date" name="Inicio" id="Inicio" required>
+  </div>
+  
+  <div class="form-row-termino">
+    <label for="Termino" class="fotm-row-text">Término:</label>
+    <input type="date" name="Termino" id="Termino" required>
+  </div>
+  
+  <div class="form-row-status" style="width: 0px;">
+    <label class="form-row-text st">Status:</label>
+    <input type="radio" name="Status" id="status-iniciado" value="Iniciado" required="">
+    <label class="inici" for="status-iniciado">Iniciado</label>
+    <input type="radio" name="Status" id="status-nao-iniciado" value="Não iniciado">
+    <label class="n-ini" for="status-nao-iniciado">Não iniciado</label>
+    <input type="radio" name="Status" id="status-em-andamento" value="Em andamento">
+    <label class="anda" for="status-em-andamento">Em andamento</label>
+    <input type="radio" name="Status" id="status-concluido" value="Concluído">
+    <label class="concl" for="status-concluido">Concluído</label>
+</div>
+
+       <!-- Outros campos do formulário -->
+  
+  <div class="buttons">
+    <button type="submit">Cadastrar</button>
+    <button id="close-modal-btn" class="close-modal"></button>
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  
+
+<!-- Modal de edição -->
+
+        
+          <div class="modal fade" id="edit-projeto-modal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close" onclick="fecharPopUp()" style="display: flex; align-items: center;">
+                    
+                  </button>
+          
+               
+                </div>
+                <div class="modal-body">
+                  <form id="edit-projeto-form" class="edit-projeto-form" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="edit-projeto-EscopoProjeto" value="">
+                    <div class="form-row">
+                      <label for="title" class="modal-title" id="editModalLabel">Editar Projeto</label>
+                      <hr class="form-line">
+                    </div>
+                  
+                    <div class="add-projeto-form-container">
+                    <div class="form-row-cliente">
+                      <h6><label for="edit-Cliente">Cliente:</label></h6>
+                      <select id="edit-Cliente" name="edit-Cliente" class="edit-projeto-Cliente form-control" required>
+                        <option value="">Selecione o usuário</option>
+                      </select>  
+                      </div>
+                  </div>
+                    <div class="form-row-projeto">
+                      <h6><label for="edit-TipoProjeto">Tipo de Projeto:</label></h6>
+                      <select id="edit-TipoProjeto" name="edit-TipoProjeto" class="edit-projeto-TipoProjeto form-control" required>
+                        <option value="">Selecione o tipo de projeto</option>
+                        <option value="Implantação">Implantação</option>
+                        <option value="Revitalização">Revitalização</option>
+                        <option value="Job To Be">Job To Be</option>
+                        <option value="BPO">BPO</option>
+                        <option value="BI Novos Negócios">BI Novos Negócios</option>
+                        <option value="Horas Medidas">Horas Medidas</option>
+                        <option value="Histórico">Histórico</option>
+                        <option value="Globaltec">Globaltec</option>
+                      </select>
+                    </div>
+                    <div class="form-row-consultor">
+                      <h6><label for="edit-Consultor" >Usuário:</label></h6>
+                      <select id="edit-Consultor" name="edit-Consultor" class="edit-projeto-Consultor form-control" required>
+                        <option value="">Selecione o usuário</option>
+                      </select>                      
+                    </div>
+                    <div class="form-row-gpcli">
+                      <h6><label for="edit-GPCliente">GP Cliente:</label></h6>
+                      <input type="text" id="edit-GPCliente" name="edit-GPCliente" class="edit-projeto-GPCliente form-control" placeholder="Nome do GP Cliente" required>
+                    </div>
+                    <div class="form-row-gpwin">
+                      <h6><label for="edit-GPWinnercon">GP Winnercon:</label></h6>
+                      <input type="text" id="edit-GPWinnercon" name="edit-GPWinnercon" class="edit-projeto-GPWinnercon form-control" placeholder="Nome do GP Winnercon" required>
+                    </div>
+                    <div class="form-row-tipofat">
+                      <h6><label for="edit-TipoFaturamento">Tipo de Faturamento:</label></h6>
+                      <input type="text" id="edit-TipoFaturamento" name="edit-TipoFaturamento" class="edit-projeto-TipoFaturamento form-control" placeholder="Tipo de Faturamento" required>
+                    </div>
+                    <div class="form-row-tiposer">
+                      <h6><label for="edit-TipoServidor">Tipo de Servidor:</label></h6>
+                      <input type="text" id="edit-TipoServidor" name="edit-TipoServidor" class="edit-projeto-TipoServidor form-control" placeholder="Tipo de Servidor" required>
+                    </div>
+                    <div class="form-row-proposta">
+                      <h6><label for="edit-Proposta">Proposta:</label></h6>
+                      <input type="text" id="edit-Proposta" name="edit-Proposta" class="edit-projeto-Proposta form-control" placeholder="Proposta" required>
+                    </div>
+                    <div class="form-row-responsavel">
+                      <h6><label for="edit-ResponsavelAssinou">Responsável Assinou:</label></h6>
+                      <input type="text" id="edit-ResponsavelAssinou" name="edit-ResponsavelAssinou" class="edit-projeto-ResponsavelAssinou form-control" placeholder="Nome do responsável que assinou" required>
+                    </div>
+                    <div class="form-row-assinado">
+                      <h6><label for="edit-Assinado">Assinado:</label></h6>
+                      <input type="text" id="edit-Assinado" name="edit-Assinado" class="edit-projeto-Assinado form-control" placeholder="Assinado" required>
+                    </div>
+                    <div class="form-row-horas">
+                      <h6><label for="edit-Horas">Horas:</label></h6>
+                      <input type="number" id="edit-Horas" name="edit-Horas" class="edit-projeto-Horas form-control" placeholder="Horas" required>
+                    </div>
+                    <div class="form-row-valorhora">
+                      <h6><label for="edit-ValorHora">Valor da Hora:</label></h6>
+                      <input type="number" step="0.01" id="edit-ValorHora" name="edit-ValorHora" class="edit-projeto-ValorHora form-control" placeholder="Valor da Hora" required>
+                    </div>
+                    <div class="form-row-inicio">
+                      <h6><label for="edit-Inicio">Início:</label></h6>
+                      <input type="date" id="edit-Inicio" name="edit-Inicio" class="edit-projeto-Inicio form-control" required>
+                    </div>
+                    <div class="form-row-termino">
+                      <h6><label for="edit-Termino">Término:</label></h6>
+                      <input type="date" id="edit-Termino" name="edit-Termino" class="edit-projeto-Termino form-control" required>
+                    </div>
+                     <div class="edit-form-row-status">
+                      <h6><label for="edit-Status">Status:</label></h6>
+                      <input type="text" id="edit-Status" name="edit-Status" class="edit-projeto-Status form-control" placeholder="Status" required>
+                    </div>
+                  
+                    <!-- Mais campos... -->
+                    <div class="buttons">
+                      <button type="submit" class="btn btn-primary">Atualizar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+<div id="modal_confirm" class="modal-confirm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #f44336; color: #fff;">
+        <h5 class="modal-title">Confirme a exclusão</h5>
+        
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza de que deseja excluir este projeto?</p>
+      </div>
+      <div class="modal-footer" style="border-top: 1px solid #ddd;">
+        <button type="button" class="btn btn-danger" onclick="deleteUserConfirmed()">Excluir</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+      </div>
+      <input type="hidden" id="delete-user-EscopoProjeto">
+    </div>
+  </div>
+</div>
+<button id="toggleOrderButton" class="order"><i class='bx bxs-sort-alt icon'></i>Alternar Ordem</button>
+  <!-- TODA A PARTE DE APARECER OS USUÁRIOS -->
+  <div class="inf">
+    <h3 class="Info11">Escopo</h3>
+    <h3 class="Info21">Cliente</h3>
+    <h3 class="Info3">Usuário</h3>
+    
+  </div>
+ 
+
+  <div id="projeto-list"></div>
+
+
+  <div id="projeto-list">
+   
+  </div>
+  
+
+                  <!-- Adicione um ID ao elemento de formulário para que ele possa ser selecionado corretamente -->
+
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+                  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script src="https://unpkg.com/unfetch/dist/unfetch.umd.js"></script>
+                  
+                  <!-- Seu script personalizado -->
+                  <script src="{{ url_for('static', filename='cadastroprojetos.js') }}"></script>
+                  <script src="{{ url_for('static', filename='Darkmode.js') }}"></script>
+                  
+
+            
+        
+      
+        
+          
+
+        </section>
+
+   
+     
+     
+        
+
+</body>
+</html>

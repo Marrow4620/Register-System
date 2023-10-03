@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+ 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cadastrocliente.css') }}">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+  
+    
+
+    <!--<title>Dashboard Sidebar Menu</title>--> 
+</head>
+<body>
+    
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <a href="{{ url_for('index') }}">
+
+                        <img src="{{ url_for('static', filename='') }}" alt="Descrição da imagem">
+                      </a>
+                      
+                </span>
+                <!-- LOGO -->
+                <div class="text logo-text">
+                    <i class='bx bx-objects-vertical-bottom icon'></i>
+                    <span class="name"></span>
+                    <span class="profession"></span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <!-- ITENS DO MENU -->
+                <!--SEMPRE QUE FOR ADICIONAR UM ICONE NO SIDEBAR TEM QUE COLOCAR "icon" NO FINAL --> 
+
+                <!-- ESPAÇO ENTRE A LOGO E O MENU -->
+                <li class="-"></li>
+                <!--  -->
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-data icon'></i>
+                            <span class="text nav-text">Agendamentos</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-time-five icon'></i>
+                            <span class="text nav-text">Medições</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link active" onclick="selectMenuItem(this)">
+                        <a href="#">
+                            <i class='bx bx-pencil icon'></i>
+                            <span class="text nav-text">Cadastros</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-business icon'></i>
+                            <span class="text nav-text">Projetos</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-calendar icon'></i>
+                            <span class="text nav-text">Cronograma</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-stats icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Acesso Consultor</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Sair</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+                
+    </nav>
+
+    <!---TODO O BACKGROUND-->
+
+        <section class="home">
+            <div class="text">
+        <!-- O MENU DA PÁGINA DE USUÁRIO -->
+                <div id="menu">
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="{{ url_for('cadastrar_usuario.cadastrar_usuario') }}">Usuário</a>
+                            </li>
+                            <li>
+                                <a href="#"  class="fixed-menu">Cliente</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('cadastrar_itens.cadastrar_itens') }}">Item</a
+                                    ></li>
+                            <li>
+                                <a href="{{ url_for('cadastrar_projetos.cadastrar_projetos') }}">Projeto</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('cadastrar_cronograma.cadastrar_cronograma') }}">Cronograma</a>
+                            </li>
+                        </ul>
+                    </nav>
+        
+                </div>
+                 <!-- TODA O MENU DE CIMA, SERÁ USADA PADRÃO NAS OUTRAS PÁGINAS -->
+                <div class="filtro">
+
+                    <!-- TITULO DA PÁGINA -->
+                    <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 34px;">Cliente</h1>
+
+
+                  
+    
+                    
+                    <!-- Parte do HTML com o formulário de pesquisa -->
+<div class="search-bar">
+  <form id="search-form" action="/search" method="POST">
+    <input type="text" class="search-input" name="q" placeholder="Pesquisar Cliente" autocomplete="off">
+    <button type="submit" class="search-button">Pesquisar</button>
+    <button id="toggleOrderButton" class="order"><i class='bx bxs-sort-alt icon'></i>Alternar Ordem</button>
+  </form>
+
+</div>
+
+
+<div class="Cadastrar">
+  <button id="add-cliente-btn" class="add-cliente-btn" style="display: flex; align-items: center;">
+    <i class='bx bxs-plus-circle icon' style='color:hsl(120, 100%, 24%); font-size: 20px; vertical-align: middle'></i>
+    <span style="margin-left: 5px; font-size: 16px">Cadastrar</span>
+  </button>
+  <div id="add-cliente-modal" class="add-cliente-modal">
+    <div class="modal-content">
+      <form id="add-cliente-form" class="add-cliente-form">
+        <div class="form-row">
+          <label for="title" class="cadtitle">Cadastro de clientes</label>
+          <hr class="form-line">
+        </div>
+        <!-- Restante do formulário -->
+
+
+<!-- Novos campos -->
+<div class="form-row-nome">
+  <label for="nome" class="fotm-row-text">Nome do cliente:</label>
+  <input type="text" id="nome"  required>
+</div>
+
+<div class="form-row-cpf">
+  <label for="cpf_cnpj" class="fotm-row-text">CPF/CNPJ:</label>
+  <input type="text" id="cpf_cnpj" required>
+</div>
+
+<div class="form-row-email">
+  <label for="email" class="fotm-row-text">Email:</label>
+  <input type="email" id="email" required>
+</div>
+
+<div class="form-row-tipo">
+  <label for="tipo" class="fotm-row-text">Tipo:</label>
+  <input type="radio" name="tipo" id="fisica" value="Física" required checked> <label for="fisica" id="fis">Física</label> 
+  <input type="radio" name="tipo" id="juridico" value="Jurídica" required> <label for="juridico" id="jur">Jurídica</label>
+</div>
+
+<div class="form-row-cep">
+  <label for="cep" class="fotm-row-text">CEP:</label>
+  <input type="text" id="cep" required>
+  <button class="busccep" onclick="consultaEndereco('cep', 'logradouro', 'complemento', 'bairro', 'cidade', 'uf')"><i class='bx bx-search'></i></button>
+  <div id="resultado">
+  </div>
+</div>
+
+<div class="form-row-pais">
+  <label for="pais" class="fotm-row-text">País:</label>
+  <input type="text" id="pais" required value="Brasil" >
+</div>
+
+<div class="form-row-uf">
+  <label for="uf" class="fotm-row-text">UF:</label>
+  <input type="text" id="uf" required>
+</div>
+
+<div class="form-row-cidade">
+  <label for="cidade" class="fotm-row-text">Cidade:</label>
+  <input type="text" id="cidade" required>
+</div>
+
+<div class="form-row-logradouro">
+  <label for="logradouro" class="fotm-row-text">Logradouro:</label>
+  <input type="text" id="logradouro" required>
+</div>
+
+<div class="form-row-bairro">
+  <label for="bairro" class="fotm-row-text">Bairro:</label>
+  <input type="text" id="bairro" required>
+</div>
+
+<div class="form-row-numero">
+  <label for="numero" class="fotm-row-text">Número</label>
+  <input type="text" id="numero" required>
+</div>
+
+<div class="form-row-complemento">
+  <label for="complemento" class="fotm-row-text">Complemento:</label>
+  <input type="text" id="complemento" >
+</div>
+
+<div class="form-row-telefone">
+  <label for="telefone" class="fotm-row-text">Telefone:</label>
+  <input type="text" id="telefone"  required>
+</div>
+
+<div class="form-row-dt">
+  <label for="data_cadastro" class="fotm-row-text">Data de cadastro:</label>
+  <input type="date" id="data_cadastro" required>
+</div>
+
+<div class="form-row-situacao">
+  <label for="situacao" class="fotm-row-text" >Situação:</label>
+  <input type="radio" name="situacao" id="ativo" value="Ativo" required checked> <label for="ativo" id="ati">Ativo</label>
+<input type="radio" name="situacao" id="inativo" value="Inativo" required> <label for="inativo" id="ina">Inativo</label>
+
+</div>
+
+<div class="buttons">
+  <button type="submit">Cadastrar</button>
+  <button id="close-modal-btn" class="close-modal"></button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+      
+      
+        
+       
+
+<!-- Modal de edição -->
+<div class="modal fade" id="edit-cliente-modal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close" onclick="fecharPopUp()" style="display: flex; align-items: center;">
+          
+        </button>
+
+     
+      </div>
+      <div class="modal-body">
+        <form id="edit-cliente-form" class="edit-cliente-form" method="POST" enctype="multipart/form-data">
+          <input type="hidden" id="edit-cliente-cpf_cnpj" value="">
+          
+          <div class="form-row">
+            <label for="title" class="modal-title" id="editModalLabel" style="white-space: nowrap;">Editar Cliente</label>
+            <hr class="form-line">
+          </div>
+
+          
+          <div class="form-row-nome">
+            <label for="edit-nome">Nome:</label>
+            <input type="text" id="edit-nome" name="edit-nome" class="edit-cliente-nome form-control" placeholder="Nome completo" required>
+          </div>
+          
+          
+          
+          <div class="form-row-email">
+            <label for="edit-email" class="fotm-row-text">Email:</label>
+            <input type="email" id="edit-email" name="edit-email" class="edit-cliente-email form-control" required>
+          </div>
+          
+          <div class="form-row-tipo">
+            <label for="edit-tipo" class="fotm-row-text">Tipo:</label>
+            <input type="radio" name="edit-tipo" id="edit-fisica" value="Física" required> <label for="edit-fisica" id="edit-fis">Física</label> 
+            <input type="radio" name="edit-tipo" id="edit-juridico" value="Jurídica" required> <label for="edit-juridico" id="edit-jur">Jurídico</label>
+        </div>
+        
+          
+          <div class="form-row-cep">
+            <label for="edit-cep" class="fotm-row-text">CEP:</label>
+            <input type="text" id="edit-cep" name="edit-cep" class="edit-cliente-cep form-control" required>
+            <button class="busccep" onclick="consultaEndereco('edit-cep', 'edit-logradouro', 'edit-complemento', 'edit-bairro', 'edit-cidade', 'edit-uf')"><i class='bx bx-search'></i></button>
+            <div id="edit-resultado">
+            </div>
+          </div>
+          
+          <div class="form-row-pais">
+            <label for="edit-pais" class="fotm-row-text">País:</label>
+            <input type="text" id="edit-pais" name="edit-pais" class="edit-cliente-pais form-control" required  style="width: 121px;">
+          </div>
+          
+          <div class="form-row-uf" style="margin-left: -4px;">
+            <label for="edit-uf" class="fotm-row-text">UF:</label>
+            <input type="text" id="edit-uf" name="edit-uf" class="edit-cliente-uf form-control" required>
+          </div>
+          
+          <div class="form-row-cidade" style="position: fixed; left: 263px;">
+            <label for="edit-cidade" class="fotm-row-text">Cidade:</label>
+            <input type="text" id="edit-cidade" name="edit-cidade" class="edit-cliente-cidade form-control" required>
+          </div>
+          
+          <div class="form-row-logradouro" style="margin-left: -22px">
+            <label for="edit-logradouro" class="fotm-row-text">Logradouro:</label>
+            <input type="text" id="edit-logradouro" name="edit-logradouro" class="edit-cliente-logradouro form-control" required>
+          </div>
+          
+          <div class="form-row-bairro">
+            <label for="edit-bairro" class="fotm-row-text">Bairro:</label>
+            <input type="text" id="edit-bairro" name="edit-bairro" class="edit-cliente-bairro form-control" required>
+          </div>
+          
+          <div class="form-row-numero">
+            <label for="edit-numero" class="fotm-row-text">Número</label>
+            <input type="text" id="edit-numero" name="edit-numero" class="edit-cliente-numero form-control" required>
+          </div>
+          
+          <div class="form-row-complemento">
+            <label for="edit-complemento" class="fotm-row-text">Complemento:</label>
+            <input type="text" id="edit-complemento" name="edit-complemento" class="edit-cliente-complemento form-control">
+          </div>
+          
+          <div class="form-row-telefone">
+            <label for="edit-telefone" class="fotm-row-text">Telefone:</label>
+            <input type="text" id="edit-telefone" name="edit-telefone" class="edit-cliente-telefone form-control" required  style="width: 141px;">
+          </div>
+          
+       
+          
+          <div class="form-row-situacao">
+            <label for="edit-situacao" class="fotm-row-text">Situação:</label>
+            <input type="radio" name="edit-situacao" id="edit-ativo" value="ativo" required> <label for="edit-ativo" id="edit-ati">Ativo</label>
+            <input type="radio" name="edit-situacao" id="edit-inativo" value="inativo" required> <label for="edit-inativo" id="edit-ina">Inativo</label>
+            <input type="hidden" id="edit-situacao-hidden" name="edit-situacao-hidden" value=""> <!-- Campo oculto para armazenar o valor selecionado -->
+          </div>
+        
+
+          
+          
+        
+          
+        
+          
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="modal_confirm" class="modal-confirm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #f44336; color: #fff;">
+        <h5 class="modal-title">Confirme a exclusão</h5>
+        
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza de que deseja excluir este cliente?</p>
+      </div>
+      <div class="modal-footer" style="border-top: 1px solid #ddd;">
+        <button type="button" class="btn btn-danger" onclick="deleteClienteConfirmed()">Excluir</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+      </div>
+      <input type="hidden" id="delete-cliente">
+    </div>
+  </div>
+</div>
+
+  <!-- TODA A PARTE DE APARECER OS USUÁRIOS -->
+
+
+  <div class="inf">
+    <!--<h3 class="Info1">Login</h3>   -->
+    <h3 class="Info2">Nome</h3>
+    <h3 class="Info3">Email</h3>
+    <h3 class="Info4">UF</h3>
+    <h3 class="Info5">Cidade</h3>
+  </div>
+<div id="cliente-list"></div>
+
+
+
+  <div id="cliente-list" style="padding: 100px;">
+
+  </div>
+  
+  
+
+  
+
+                  <!-- Adicione um ID ao elemento de formulário para que ele possa ser selecionado corretamente -->
+
+  
+
+  
+                 
+
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>               
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+                  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script src="https://unpkg.com/unfetch/dist/unfetch.umd.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+
+          
+                    
+                  
+                  <!-- Seu script personalizado -->
+                  <script src="{{ url_for('static', filename='cadastrocliente.js') }}"></script>
+                  <script src="{{ url_for('static', filename='Darkmode.js') }}"></script>
+            
+        
+      
+        
+          
+
+        </section>
+
+   
+     
+     
+        
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='style.css') }}">
+   
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--<title>Dashboard Sidebar Menu</title>-->
+</head>
+<body>
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                   
+                        <img src="{{ url_for('static', filename='logan1.webp') }}" alt="Descrição da imagem">
+                   
+                </span>
+
+                <div class="text logo-text">
+                    <i class='bx bx-objects-vertical-bottom icon'></i>
+                    <span class="name"></span>
+                    <span class="profession"></span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <!-- <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search..."> -->
+                </li>
+
+                <ul class="menu-links">
+
+                    <!--SEMPRE QUE FOR ADICIONAR UM ICONE NO SIDEBAR TEM QUE COLOCAR "icon" NO FINAL -->
+
+                    <li class="nav-link">
+                        <a href="#" class="option1"> <!-- Adicione a classe "option1" aqui -->
+                            <i class='bx bxs-data icon'></i>
+                            <span class="text nav-text">Agendamentos</span>
+                        </a>
+                    </li>
+                    
+
+                    <li class="nav-link">
+                        <a href="#" class="option2">
+                            <i class='bx bx-time-five icon'></i>
+                            <span class="text nav-text">Medições</span>
+                        </a>
+                    </li>
+       
+
+                    <li class="nav-link">
+                        <a href="#" class="menu-item option3">
+                            <i class='bx bx-pencil icon'></i>
+                            <span class="text nav-text">Cadastros</span>
+                        </a>
+                        <ul class="sub-menu" style="padding-left: 7px;">
+                            <li class="dropdown"><a href="{{ url_for('cadastrar_usuario.cadastrar_usuario') }}"class="option9"><i class='bx bx-user icon'></i><span class="text nav-text">Usuário</span></a></li>
+                            <li class="dropdown"><a href="{{ url_for('cadastrar_cliente.cadastrar_cliente') }}" class="option10"><i class='bx bxs-user-account icon'></i><span class="text nav-text">Cliente</span></a></li>
+                            <li class="dropdown"><a href="{{ url_for('cadastrar_itens.cadastrar_itens') }}" class="option11"><i class='bx bx-box icon'></i><span class="text nav-text">Item</span></a></li>
+                            <li class="dropdown"><a href="{{ url_for('cadastrar_projetos.cadastrar_projetos') }}" class="option12"><i class='bx bxs-business icon'></i><span class="text nav-text">Projeto</span></a></li>
+                            <li class="dropdown"><a href="{{ url_for('cadastrar_cronograma.cadastrar_cronograma') }}" class="option13"><i class='bx bx-calendar icon'></i><span class="text nav-text">Cronograma</span></a></li>
+                        </ul>
+                    </li>
+
+              
+                    
+                    
+                   <li class="nav-link">
+                        <a href="#" class="option4">
+                            <i class='bx bxs-business icon'></i>
+                            <span class="text nav-text">Projetos</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" class="option5">
+                            <i class='bx bx-calendar icon'></i>
+                            <span class="text nav-text">Cronograma</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" class="option6">
+                            <i class='bx bx-stats icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" class="option7">
+                            <i class='bx bx-envelope icon'></i>
+                            <span class="text nav-text">Acesso Consultor</span>
+                        </a>
+                    </li>
+                
+
+                
+            
+                    <div class="bottom-content">
+            
+
+            
+                <li class="logon">
+                    <a href="#" class="option8">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Sair</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="gif">
+            <img src="{{ url_for('static', filename='FND_11.gif') }}" alt="Descrição da imagem">
+        </div>
+
+        <div id="user-data">
+            <!-- Os dados do usuário serão inseridos aqui -->
+        </div>
+
+        <!-- <div class="text">Dashboard Sidebar</div> -->
+    </section>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('static', filename='Darkmode.js') }}"></script>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".menu-item");
+
+    menuItems.forEach((menuItem) => {
+        menuItem.addEventListener("click", function (event) {
+            event.preventDefault();
+            const subMenu = menuItem.nextElementSibling;
+
+            if (subMenu.classList.contains("active")) {
+                subMenu.classList.remove("active");
+            } else {
+                subMenu.classList.add("active");
+            }
+            
+        });
+    });
+});
+
+    </script>
+
+
+
+</body>
+</html>
